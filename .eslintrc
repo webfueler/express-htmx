@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "ts-important-stuff",
+    "ts-react-important-stuff",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint/eslint-plugin"
+  ],  
+  "parser": "@typescript-eslint/parser",
+  "root": true
+}

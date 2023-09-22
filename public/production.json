@@ -1,0 +1,62 @@
+{
+  "@fnz-dock/app-nav": {
+    "jsBundle": "http://localhost:9000/index.js",
+    "cssBundle": "http://localhost:9000/app.aef00df0a3e15bb55b95.css"
+  },
+  "@fnz-dock/app-mfe-1": {
+    "jsBundle": "http://localhost:9001/index.js",
+    "cssBundle": "http://localhost:9001/app.4ff9414272f6d4f42907.css"
+  },
+  "@fnz-dock/counter-parcel": {
+    "jsBundle": "http://localhost:9003/app.2f8c2284851660db4574.js",
+    "cssBundle": "http://localhost:9003/app.2f8c2284851660db4574.css"
+  },
+  "@fnz-dock/app-mfe-2": {
+    "jsBundle": "http://localhost:9002/index.js",
+    "cssBundle": "http://localhost:9002/app.586aab60851d9a693a28.css"
+  },
+  "@fnz-dock/app-top-bar": {
+    "jsBundle": "http://localhost:9004/app.0497cf3918eed4318a1d.js",
+    "cssBundle": "http://localhost:9004/app.0497cf3918eed4318a1d.css"
+  },
+  "single-spa": {
+    "jsBundle": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
+  },
+  "react": {
+    "jsBundle": "https://unpkg.com/react@18/umd/react.production.min.js"
+  },
+  "react-dom": {
+    "jsBundle": "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+  },
+  "@advicefront/plan-frontend-react": {
+    "jsBundle": "http://localhost:9100/plan-sandbox/app.78c2f29503619316640e.js",
+    "cssBundle": "http://localhost:9100/plan-sandbox/app.78c2f29503619316640e.css"
+  },
+  "@fnz-dock/app-breadcrumbs": {
+    "jsBundle": "http://localhost:9007/index.js",
+    "cssBundle": "http://localhost:9007/app.f29a4ee02b377346c9c7.css"
+  },
+  "@fnz-dock/parcel-stocks": {
+    "jsBundle": "http://localhost:9003/index.js"
+  },
+  "@fnz-dock/app-iframe": {
+    "jsBundle": "http://localhost:9008/index.js",
+    "cssBundle": "http://localhost:9008/app.ec8ce325201674fc994f.css"
+  },
+  "@fnz-dock/app-playground": {
+    "jsBundle": "http://localhost:9006/index.js",
+    "cssBundle": "http://localhost:9006/app.7aa69b3f15a061b85ab9.css"
+  },
+  "@fnz-dock/parcel-notifications": {
+    "jsBundle": "http://localhost:9005/index.js",
+    "cssBundle": "http://localhost:9005/app.42c3097ccc577c8ab57e.css"
+  },
+  "@fnz-dock/app-user-details": {
+    "jsBundle": "http://localhost:9009/index.js",
+    "cssBundle": "http://localhost:9009/app.7f48b8566fff91bd89c0.css"
+  },
+  "@fnz-dock/app-authentication": {
+    "jsBundle": "http://localhost:9011/index.js",
+    "cssBundle": "http://localhost:9011/app.d39dd530b103f0fd2b3c.css"
+  }
+}
