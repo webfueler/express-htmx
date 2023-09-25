@@ -17,8 +17,8 @@ export const ListPage = (
         {environment}
       </h1>
       {Navigation(url, environments)}
-      {List(environment, info)}
       {AddForm(environment)}
+      {List(environment, info)}
     </div>
   </DefaultLayout>
 );
