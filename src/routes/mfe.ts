@@ -5,14 +5,19 @@ import {
   validateMfeDelete,
 } from "../models/validator";
 import { validateEnv } from "./validation";
+import { handleApiValidation } from "../middlewares/validate";
 
 const mfeRouter = Router();
 
 mfeRouter
   .route("/:env")
   .get(mfeController.getAll)
-  .post(validateMfeCreateOrUpdate, mfeController.createOrUpdate)
-  .delete(validateMfeDelete, mfeController.remove);
+  .post(
+    validateMfeCreateOrUpdate,
+    handleApiValidation(),
+    mfeController.createOrUpdate,
+  )
+  .delete(validateMfeDelete, handleApiValidation(), mfeController.remove);
 
 mfeRouter.param("env", validateEnv);
 
