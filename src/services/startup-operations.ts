@@ -8,16 +8,30 @@ export class StartupOperations {
   /**
    * initializes database with default environments if it doesn't already exist
    */
-  public static initDatabase = async () => {
-    const db_instance = new Db(DB_FILE);
-
+  public static initDatabase = async (): Promise<boolean> => {
     if (!existsSync(DB_FILE)) {
-      await db_instance.initialize(
-        ENVIRONMENTS.map(
-          (env) => `INSERT INTO environments (name) VALUES ('${env}')`,
-        ),
+      console.info(`Creating new database... ${DB_FILE}`);
+      const db = new Db(DB_FILE);
+
+      await db.open();
+      await db.database.exec(
+        "CREATE TABLE IF NOT EXISTS environments(id INTEGER PRIMARY KEY ASC, name TEXT UNIQUE)",
       );
+      await db.database.exec(
+        "CREATE TABLE IF NOT EXISTS maps(id_environment INT, name TEXT UNIQUE, js TEXT, css TEXT)",
+      );
+
+      const extraQueries = ENVIRONMENTS.map(
+        (env) => `INSERT INTO environments (name) VALUES ('${env}')`,
+      );
+
+      for (const query of extraQueries) {
+        await db.database.exec(query);
+      }
+      await db.close();
+      return true;
     }
+    return false;
   };
 
   /**

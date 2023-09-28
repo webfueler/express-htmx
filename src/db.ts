@@ -3,6 +3,14 @@ import { Db } from "./services/db";
 
 // using singleton approach (one connection in the server)
 const db_instance = new Db(DB_FILE);
-db_instance.open();
 
-export const db = db_instance;
+const getDb = async () => {
+  if (db_instance.isOpen) {
+    return db_instance;
+  }
+
+  await db_instance.open();
+  return db_instance;
+};
+
+export const db = getDb;

@@ -34,7 +34,7 @@ const server = ({ port }: { port: number }) => {
     app
       .listen(port, () => {
         // eslint-disable-next-line no-console
-        console.log(`Listening on port ${port}`);
+        console.log(`Listening at http://localhost:${port}`);
       })
       .on("error", (error) => {
         throw error;

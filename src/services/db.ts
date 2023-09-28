@@ -15,6 +15,10 @@ export class Db {
     return this.db;
   }
 
+  get isOpen(): boolean {
+    return this.db !== undefined;
+  }
+
   public open = async (): Promise<
     Database<sqlite3.Database, sqlite3.Statement>
   > => {
@@ -31,22 +35,5 @@ export class Db {
     }
     await this.db.close();
     this.db = undefined;
-  };
-
-  public initialize = async (extraQueries?: string[]): Promise<void> => {
-    const db = await this.open();
-    await db.exec(
-      "CREATE TABLE IF NOT EXISTS environments(id INTEGER PRIMARY KEY ASC, name TEXT)",
-    );
-    await db.exec(
-      "CREATE TABLE IF NOT EXISTS maps(id INTEGER PRIMARY KEY ASC, id_environment INT, name TEXT, js TEXT, css TEXT)",
-    );
-
-    if (extraQueries && extraQueries.length) {
-      for (const query of extraQueries) {
-        await db.exec(query);
-      }
-    }
-    await db.close();
   };
 }

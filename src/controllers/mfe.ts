@@ -1,6 +1,5 @@
 import { RequestHandler } from "express";
 import { MfeModel } from "../models/mfe";
-import { SchemaValidation } from "../middlewares/validate";
 
 const getAll: RequestHandler = async (req, res, next) => {
   try {
