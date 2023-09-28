@@ -14,6 +14,9 @@ Example:
 
 In webpack builds, you can use [webpack manifest plugin](https://www.npmjs.com/package/webpack-manifest-plugin).
 
+This service will save the information environment files, so that you can easily setup a CDN to and get better performance.
+Environment files can be accessed at `<host>/<environment>.json`. Example: `https://example.com/production.json`
+
 ## Types
 
 ```ts

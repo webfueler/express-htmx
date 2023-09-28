@@ -2,9 +2,8 @@ import express from "express";
 import path from "node:path";
 import { mfeRouter } from "./routes/mfe";
 import { webRouter } from "./routes/web";
-
 import { existsSync } from "node:fs";
-import { initDatabase } from "./db";
+import { StartupOperations } from "./services/startup-operations";
 
 const server = ({ port }: { port: number }) => {
   const publicFolder = path.resolve(path.join(__dirname, "..", "public"));
@@ -47,7 +46,9 @@ const server = ({ port }: { port: number }) => {
 
 (async () => {
   // initialize database
-  await initDatabase();
+  await StartupOperations.initDatabase();
+  // sync database to files
+  await StartupOperations.updateEnvironmentFiles();
 
   const s = server({ port: 8888 });
   // open server connections

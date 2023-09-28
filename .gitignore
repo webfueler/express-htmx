@@ -69,8 +69,3 @@ dist
 *.sln
 *.sw?
 .DS_Store
-
-# automatically generated documentation
-generated-docs
-
-.parcel-cache
