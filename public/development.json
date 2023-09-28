@@ -1,45 +1,14 @@
 {
   "single-spa": {
-    "jsBundle": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
+    "jsBundle": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+    "cssBundle": ""
   },
   "react": {
-    "jsBundle": "https://unpkg.com/react@18/umd/react.production.min.js"
+    "jsBundle": "https://unpkg.com/react@18/umd/react.production.min.js",
+    "cssBundle": ""
   },
   "react-dom": {
-    "jsBundle": "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
-  },
-  "@advicefront/plan-frontend-react": {
-    "jsBundle": "http://localhost:9100/plan-sandbox/app.78c2f29503619316640e.js",
-    "cssBundle": "http://localhost:9100/plan-sandbox/app.78c2f29503619316640e.css"
-  },
-  "@fnz-dock/parcel-notifications": {
-    "jsBundle": "http://localhost:9005/index.js"
-  },
-  "@fnz-dock/app-nav": {
-    "jsBundle": "http://localhost:9000/index.js"
-  },
-  "@fnz-dock/parcel-stocks": {
-    "jsBundle": "http://localhost:9003/index.js"
-  },
-  "@fnz-dock/app-breadcrumbs": {
-    "jsBundle": "http://localhost:9007/index.js"
-  },
-  "@fnz-dock/app-iframe": {
-    "jsBundle": "http://localhost:9008/index.js"
-  },
-  "@fnz-dock/app-mfe-1": {
-    "jsBundle": "http://localhost:9001/index.js"
-  },
-  "@fnz-dock/app-mfe-2": {
-    "jsBundle": "http://localhost:9002/index.js"
-  },
-  "@fnz-dock/app-playground": {
-    "jsBundle": "http://localhost:9006/index.js"
-  },
-  "@fnz-dock/app-user-details": {
-    "jsBundle": "http://localhost:9009/index.js"
-  },
-  "@fnz-dock/app-authentication": {
-    "jsBundle": "http://localhost:9011/index.js"
+    "jsBundle": "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js",
+    "cssBundle": ""
   }
 }

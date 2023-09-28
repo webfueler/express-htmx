@@ -2,12 +2,12 @@ import { RequestHandler } from "express";
 import { MfeModel } from "../models/mfe";
 import { HomePage } from "../views/pages/Home";
 import { ListPage } from "../views/pages/List";
-import { ALLOWED_ENVS } from "../routes/constants";
 import { List } from "../views/components/List";
 
 const home: RequestHandler = async (req, res, next) => {
   try {
-    res.status(200).send(HomePage(req.originalUrl, ALLOWED_ENVS));
+    const allowedEnvs = await MfeModel.getAllEnvs();
+    res.status(200).send(HomePage(req.originalUrl, allowedEnvs));
   } catch (err) {
     next(err);
   }
@@ -16,9 +16,10 @@ const home: RequestHandler = async (req, res, next) => {
 const get: RequestHandler = async (req, res, next) => {
   try {
     const mfeList = await MfeModel.getAll(req.params.env);
+    const allowedEnvs = await MfeModel.getAllEnvs();
     res
       .status(200)
-      .send(ListPage(req.originalUrl, ALLOWED_ENVS, req.params.env, mfeList));
+      .send(ListPage(req.originalUrl, allowedEnvs, req.params.env, mfeList));
   } catch (err) {
     next(err);
   }
@@ -39,7 +40,7 @@ const createOrUpdate: RequestHandler = async (req, res, next) => {
 const remove: RequestHandler = async (req, res, next) => {
   try {
     const env = req.params.env;
-    const name = req.params.name;
+    const name = decodeURIComponent(req.params.name);
     await MfeModel.remove(env, { name });
 
     const mfeList = await MfeModel.getAll(env);

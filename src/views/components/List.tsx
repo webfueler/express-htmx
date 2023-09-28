@@ -39,7 +39,7 @@ export const List = (environment: string, info: MfeInfo) => (
             <td class="px-6 py-4 text-right">
               <button
                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                hx-delete={`/${environment}/${name}`}
+                hx-delete={`/${environment}/${encodeURIComponent(name)}`}
               >
                 Delete
               </button>
