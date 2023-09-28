@@ -2,7 +2,10 @@ import * as elements from "typed-html";
 import { MfeInfo } from "../../models/schema";
 
 export const List = (environment: string, info: MfeInfo) => (
-  <div class="relative overflow-x-auto shadow-md sm:rounded-lg" id="list">
+  <div
+    class="relative overflow-x-auto shadow-md sm:rounded-lg w-full mt-10"
+    id="list"
+  >
     <table
       class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
       hx-confirm="Are you sure?"

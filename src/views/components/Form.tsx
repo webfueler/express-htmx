@@ -3,7 +3,7 @@ import * as elements from "typed-html";
 
 export const AddForm = (environment: string) => (
   <div class="py-10 w-full">
-    <h2 class="p-6 space-x-4 text-3xl font-bold dark:text-gray-100 capitalize">
+    <h2 class="py-4 space-x-4 text-3xl font-bold dark:text-gray-100 capitalize">
       Add new package
     </h2>
     <form hx-post={`/${environment}`} hx-target="#list" hx-swap="outerHTML">
