@@ -1,4 +1,18 @@
-Service that registers and updates microfrontends and javascript bundles to be included as import maps
+# Registry
+
+Service that registers and updates micro-frontends and javascript bundles to be included as import maps.
+This registry supports reading from a manifest file (`manifest.json`) that should be available in the root folder of your micro-frontend bundle.
+This file - `manifest.json` - should have the urls for you `javascript` and `css` bundle.
+Example:
+
+```json
+{
+  "main.js": "main.1234567890.js",
+  "index.css": "index.0987654321.css"
+}
+```
+
+In webpack builds, you can use [webpack manifest plugin](https://www.npmjs.com/package/webpack-manifest-plugin).
 
 ## Types
 
@@ -30,13 +44,11 @@ type DeleteMfeDto = {
 
 ## API Endpoints
 
-
-| Endpoint    | Method   | Description                       | Body           | Response  |
-| ----------- | -------- | --------------------------------- | -------------- | --------- |
-| `/mfe`      | `GET`    | returns all entries               | `N/A`          | `MfeInfo` |
-| `/mfe/:env` | `POST`   | creates or updates existing entry | `MfeDto`       | `MfeInfo` |
-| `/mfe/:env` | `DELETE` | deletes existing entry            | `DeleteMfeDto` | `N/A`     |
-
+| Endpoint        | Method   | Description                       | Body           | Response  |
+| --------------- | -------- | --------------------------------- | -------------- | --------- |
+| `/api/mfe`      | `GET`    | returns all entries               | `N/A`          | `MfeInfo` |
+| `/api/mfe/:env` | `POST`   | creates or updates existing entry | `MfeDto`       | `MfeInfo` |
+| `/api/mfe/:env` | `DELETE` | deletes existing entry            | `DeleteMfeDto` | `N/A`     |
 
 > ### Note:
 >
