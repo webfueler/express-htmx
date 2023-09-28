@@ -1,4 +1,4 @@
-# Registry
+# Import Maps registry using Express and HTMX
 
 Service that registers and updates micro-frontends and javascript bundles to be included as import maps.
 This registry supports reading from a manifest file (`manifest.json`) that should be available in the root folder of your micro-frontend bundle.
