@@ -18,7 +18,7 @@ export class StartupOperations {
         "CREATE TABLE IF NOT EXISTS environments(id INTEGER PRIMARY KEY ASC, name TEXT UNIQUE)",
       );
       await db.database.exec(
-        "CREATE TABLE IF NOT EXISTS maps(id_environment INT, name TEXT UNIQUE, js TEXT, css TEXT)",
+        "CREATE TABLE IF NOT EXISTS maps(id_environment INT, name TEXT, js TEXT, css TEXT)",
       );
 
       const extraQueries = ENVIRONMENTS.map(
