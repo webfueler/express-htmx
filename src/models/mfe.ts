@@ -1,6 +1,6 @@
 import { IoOperations } from "../services/io";
 import { Manifest } from "../services/manifest";
-import { ApiError, DeleteMfeDto, MfeDto, MfeInfo } from "./schema";
+import { ApiError, DeleteMfeDto, MfeDto, MfeInfo, MfeWebDto } from "./schema";
 import { db } from "../db";
 
 const getEnvIdOrThrow = async (env: string): Promise<number> => {
@@ -53,7 +53,7 @@ const getAll = async (env: string): Promise<MfeInfo> => {
 
 const createOrUpdate = async (
   env: string,
-  mfe: MfeDto,
+  mfe: MfeDto | MfeWebDto,
 ): Promise<MfeInfo | ApiError> => {
   let jsBundle: string;
   let cssBundle: string | undefined;
@@ -62,16 +62,13 @@ const createOrUpdate = async (
   // load from manifest file if it's the case
   if (mfe.manifest) {
     try {
-      ({ jsBundle, cssBundle } = await Manifest.loadManifest(mfe.url));
+      ({ jsBundle, cssBundle } = await Manifest.loadManifest(mfe.url).catch(
+        (reason) => {
+          throw new Error(reason);
+        },
+      ));
     } catch (e) {
-      return {
-        status: "failed",
-        error: [
-          {
-            message: `Unable to load manifest from ${mfe.url}`,
-          },
-        ],
-      };
+      throw new Error(`Unable to load manifest from ${mfe.url}`);
     }
   } else {
     jsBundle = mfe.url;

@@ -9,7 +9,9 @@ export class Manifest {
 
       try {
         manifest = (
-          await axios.get<Record<string, string>>(mfeUrl + "/manifest.json")
+          await axios.get<Record<string, string>>(mfeUrl + "/manifest.json", {
+            timeout: 1000,
+          })
         ).data;
 
         let jsBundle = "";
@@ -26,9 +28,15 @@ export class Manifest {
 
         resolve({ jsBundle, cssBundle });
       } catch (e) {
-        reject(e);
-      }
+        if (axios.isAxiosError(e)) {
+          reject(e.message);
+        }
 
-      reject(`Unable to load manifest from "${mfeUrl + "/manifest.json"}"`);
+        if (e instanceof Error) {
+          reject(e.message);
+        }
+
+        reject(String(e));
+      }
     });
 }

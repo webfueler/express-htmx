@@ -15,6 +15,21 @@ export const MfeSchema = z.object({
   manifest: z.boolean().optional(),
 });
 
+export const MfeWebSchema = z.object({
+  name: z
+    .string({
+      required_error: "'name' is required",
+    })
+    .trim()
+    .min(1, "'name' cannot be empty"),
+  url: z
+    .string({
+      required_error: "'url' is required",
+    })
+    .url("'url' is not an url"),
+  manifest: z.string().includes("on").optional(),
+});
+
 export const DeleteMfeSchema = z.object({
   name: z
     .string({
@@ -36,6 +51,7 @@ export const MfeInfoSchema = z.record(
   }),
 );
 
+export type MfeWebDto = z.infer<typeof MfeWebSchema>;
 export type MfeDto = z.infer<typeof MfeSchema>;
 export type DeleteMfeDto = z.infer<typeof DeleteMfeSchema>;
 export type MfeInfo = z.infer<typeof MfeInfoSchema>;

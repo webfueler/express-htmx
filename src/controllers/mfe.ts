@@ -15,7 +15,14 @@ const createOrUpdate: RequestHandler = async (req, res, next) => {
     const mfe = await MfeModel.createOrUpdate(req.params.env, req.body);
     res.status(201).json(mfe);
   } catch (err) {
-    next(err);
+    return res.status(202).json({
+      status: "failed",
+      error: [
+        {
+          message: err instanceof Error && err.message,
+        },
+      ],
+    });
   }
 };
 
