@@ -1,12 +1,29 @@
 import { RequestHandler } from "express";
 import { MfeModel } from "../models/mfe";
 
+type ErrorHandler = (
+  req: Parameters<RequestHandler>["0"],
+  res: Parameters<RequestHandler>["1"],
+  err: unknown,
+) => void;
+
+const handleControllerError: ErrorHandler = async (req, res, err) => {
+  return res.status(202).json({
+    status: "failed",
+    error: [
+      {
+        message: err instanceof Error && err.message,
+      },
+    ],
+  });
+};
+
 const getAll: RequestHandler = async (req, res, next) => {
   try {
     const mfeList = await MfeModel.getAll(req.params.env);
     res.status(200).json(mfeList);
   } catch (err) {
-    next(err);
+    handleControllerError(req, res, err);
   }
 };
 
@@ -15,14 +32,7 @@ const createOrUpdate: RequestHandler = async (req, res, next) => {
     const mfe = await MfeModel.createOrUpdate(req.params.env, req.body);
     res.status(201).json(mfe);
   } catch (err) {
-    return res.status(202).json({
-      status: "failed",
-      error: [
-        {
-          message: err instanceof Error && err.message,
-        },
-      ],
-    });
+    handleControllerError(req, res, err);
   }
 };
 
@@ -37,7 +47,7 @@ const remove: RequestHandler = async (req, res, next) => {
       res.status(200).json(result);
     }
   } catch (err) {
-    next(err);
+    handleControllerError(req, res, err);
   }
 };
 

@@ -138,10 +138,7 @@ const remove = async (
     await IoOperations.save(filename, newData);
     return {};
   } else {
-    return {
-      status: "failed",
-      message: `"${mfe.name}" does not exist.`,
-    };
+    throw new Error(`"${mfe.name}" does not exist.`);
   }
 };
 
