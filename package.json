@@ -10,7 +10,7 @@
     "start:dev:watch": "nodemon --watch dist --watch src dist/index.js",
     "build": "concurrently npm:build:*",
     "build:server": "NODE_ENV=production webpack",
-    "build:css": "tailwindcss -i ./src/input.css -o ./public/assets/index.css",
+    "build:css": "tailwindcss -i ./src/index.css -o ./public/assets/index.css",
     "serve": "node dist/index.js",
     "lint": "eslint src --ext ts,tsx"
   },
