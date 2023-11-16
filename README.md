@@ -49,7 +49,7 @@ type DeleteMfeDto = {
 
 | Endpoint        | Method   | Description                       | Body           | Response  |
 | --------------- | -------- | --------------------------------- | -------------- | --------- |
-| `/api/mfe`      | `GET`    | returns all entries               | `N/A`          | `MfeInfo` |
+| `/api/mfe/:env` | `GET`    | returns all entries for `:env`    | `N/A`          | `MfeInfo` |
 | `/api/mfe/:env` | `POST`   | creates or updates existing entry | `MfeDto`       | `MfeInfo` |
 | `/api/mfe/:env` | `DELETE` | deletes existing entry            | `DeleteMfeDto` | `N/A`     |
 
@@ -57,6 +57,18 @@ type DeleteMfeDto = {
 >
 > `:env` can be one of `development`, `production` or `sandbox`;
 
-## To Do:
+## Getting Started:
 
-- update validation middleware to support HTMX
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development environment:
+
+```bash
+npm start
+```
+
+Go to http://localhost:8888
